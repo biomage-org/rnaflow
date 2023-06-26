@@ -1,0 +1,240 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
+    "title": ". pipeline parameters",
+    "description": "",
+    "type": "object",
+    "definitions": {
+        "resources": {
+            "title": "Resources",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "cores": {
+                    "type": "integer",
+                    "default": 1,
+                    "fa_icon": "fas fa-desktop"
+                },
+                "memory": {
+                    "type": "string",
+                    "default": "8 GB"
+                },
+                "max_cores": {
+                    "type": "integer",
+                    "default": 12
+                }
+            },
+            "fa_icon": "fas fa-microchip"
+        },
+        "reference_genome_options": {
+            "title": "Reference genome options",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Reference genome related files and options required for the workflow.",
+            "properties": {
+                "reads": {
+                    "type": "string",
+                    "description": "Specify your read files in FASTQ format. https://github.com/biomage-org/rnaflow#read-files-required"
+                },
+                "genome": {
+                    "type": "string",
+                    "description": "Name of iGenomes reference.",
+                    "fa_icon": "fas fa-book",
+                    "help_text": "If using a reference genome configured in the pipeline using iGenomes, use this parameter to give the ID for the reference. This is then used to build the full paths for all required reference genome files e.g. `--genome GRCh38`. \n\nSee the [nf-core website docs](https://nf-co.re/usage/reference_genomes) for more details."
+                },
+                "autodownload": {
+                    "type": "string"
+                },
+                "pathway": {
+                    "type": "string"
+                }
+            }
+        },
+        "generic_options": {
+            "title": "Generic options",
+            "type": "object",
+            "fa_icon": "fas fa-file-import",
+            "description": "Less common options for the pipeline, typically set in a config file.",
+            "help_text": "These options are common to all nf-core pipelines and allow you to customise some of the core preferences for how the pipeline runs.\n\nTypically these options would be set in a Nextflow config file loaded for all pipeline runs, such as `~/.nextflow/config`.",
+            "properties": {
+                "help": {
+                    "type": "boolean",
+                    "description": "Display help text.",
+                    "fa_icon": "fas fa-question-circle",
+                    "hidden": true
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/resources"
+        },
+        {
+            "$ref": "#/definitions/reference_genome_options"
+        },
+        {
+            "$ref": "#/definitions/generic_options"
+        }
+    ],
+    "properties": {
+        "profile": {
+            "type": "string",
+            "default": "false"
+        },
+        "annotation": {
+            "type": "string"
+        },
+        "deg": {
+            "type": "string"
+        },
+        "nanopore": {
+            "type": "string",
+            "default": "false"
+        },
+        "species": {
+            "type": "string"
+        },
+        "include_species": {
+            "type": "string",
+            "default": "false"
+        },
+        "strand": {
+            "type": "string"
+        },
+        "mode": {
+            "type": "string"
+        },
+        "tpm": {
+            "type": "integer",
+            "default": 1
+        },
+        "fastp_additional_params": {
+            "type": "string",
+            "default": "-5 -3 -W 4 -M 20 -l 15 -x -n 5 -z 6"
+        },
+        "hisat2_additional_params": {
+            "type": "string"
+        },
+        "minimap2_additional_params": {
+            "type": "string"
+        },
+        "featurecounts_additional_params": {
+            "type": "string",
+            "default": "-t exon -g gene_id"
+        },
+        "feature_id_type": {
+            "type": "string",
+            "default": "ensembl_gene_id"
+        },
+        "rna": {
+            "type": "string",
+            "default": "false"
+        },
+        "setup": {
+            "type": "string",
+            "default": "false"
+        },
+        "busco_db": {
+            "type": "string",
+            "default": "euarchontoglires"
+        },
+        "dammit_uniref90": {
+            "type": "string",
+            "default": "false"
+        },
+        "skip_sortmerna": {
+            "type": "string",
+            "default": "false"
+        },
+        "skip_read_preprocessing": {
+            "type": "string",
+            "default": "false"
+        },
+        "assembly": {
+            "type": "string",
+            "default": "false"
+        },
+        "output": {
+            "type": "string",
+            "default": "results"
+        },
+        "fastp_dir": {
+            "type": "string",
+            "default": "01-Trimming/fastp"
+        },
+        "sortmerna_dir": {
+            "type": "string",
+            "default": "02-rRNARemoval/SortMeRNA"
+        },
+        "hisat2_dir": {
+            "type": "string",
+            "default": "03-Mapping/HISAT2"
+        },
+        "minimap2_dir": {
+            "type": "string",
+            "default": "03-Mapping/MINIMAP2"
+        },
+        "featurecounts_dir": {
+            "type": "string",
+            "default": "04-Counting/featureCounts"
+        },
+        "tpm_filter_dir": {
+            "type": "string",
+            "default": "05-CountingFilter/TPM"
+        },
+        "annotation_dir": {
+            "type": "string",
+            "default": "06-Annotation"
+        },
+        "deseq2_dir": {
+            "type": "string",
+            "default": "07-DifferentialExpression/DESeq2"
+        },
+        "assembly_dir": {
+            "type": "string",
+            "default": "08-Assembly/de_novo"
+        },
+        "rnaseq_annotation_dir": {
+            "type": "string",
+            "default": "09-RNA-Seq_Annotation/"
+        },
+        "uniref90_dir": {
+            "type": "string",
+            "default": "None"
+        },
+        "multiqc_dir": {
+            "type": "string",
+            "default": "Summary"
+        },
+        "readqc_dir": {
+            "type": "string",
+            "default": "Summary/NanoPlot"
+        },
+        "nf_runinfo_dir": {
+            "type": "string",
+            "default": "Logs"
+        },
+        "permanentCacheDir": {
+            "type": "string",
+            "default": "nextflow-autodownload-databases"
+        },
+        "condaCacheDir": {
+            "type": "string",
+            "default": "conda"
+        },
+        "singularityCacheDir": {
+            "type": "string",
+            "default": "singularity"
+        },
+        "softlink_results": {
+            "type": "string",
+            "default": "false"
+        },
+        "cloudProcess": {
+            "type": "string",
+            "default": "false"
+        }
+    }
+}
