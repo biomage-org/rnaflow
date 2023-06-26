@@ -35,7 +35,10 @@
             "properties": {
                 "reads": {
                     "type": "string",
-                    "description": "Specify your read files in FASTQ format. https://github.com/biomage-org/rnaflow#read-files-required"
+                    "description": "Specify your read files in FASTQ format. https://github.com/biomage-org/rnaflow#read-files-required",
+                    "pattern": "*.csv",
+                    "format": "file-path",
+                    "mimetype": "text/csv"
                 },
                 "genome": {
                     "type": "string",
@@ -49,7 +52,10 @@
                 "pathway": {
                     "type": "string"
                 }
-            }
+            },
+            "required": [
+                "reads"
+            ]
         },
         "generic_options": {
             "title": "Generic options",

@@ -1,0 +1,5 @@
+Sample,R1,R2,Condition,Source,Strandedness
+OVCAR3 WT,https://www.dropbox.com/s/e2gcpsm0koijrhm/A_1_1.fq.gz?dl=1,https://www.dropbox.com/s/0xv7cxai84d6ifi/A_1_2.fq.gz?dl=1,OVCAR3WT,A,0
+OVCAR3 WT,https://www.dropbox.com/s/sjvmqjkotdgp4kg/A_2_1.fq.gz?dl=1,https://www.dropbox.com/s/pocfeearxl6l706/A_2_2.fq.gz?dl=1,OVCAR3WT,A,0
+OVCAR3 CTRL,https://www.dropbox.com/s/9tbcencxhh113it/B_1_1.fq.gz?dl=1,https://www.dropbox.com/s/dn3a5bdgd88jxuk/B_1_2.fq.gz?dl=1,OVCAR3CTRL,B,0
+OVCAR3 CTRL,https://www.dropbox.com/s/9tbcencxhh113it/B_1_1.fq.gz?dl=1,https://www.dropbox.com/s/dn3a5bdgd88jxuk/B_1_2.fq.gz?dl=1,OVCAR3CTRL,B,0
